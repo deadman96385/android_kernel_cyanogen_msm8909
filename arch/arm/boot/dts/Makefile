@@ -219,7 +219,7 @@ endif
 ifeq ($(TARGET_PRODUCT),POP45C)
 subdir- := POP45C
 endif
-ifeq ($(TARGET_PRODUCT),POP455C)
+ifeq ($(TARGET_PRODUCT),cm_feijao)
 subdir- := POP455C
 endif
 ifeq ($(TARGET_PRODUCT),POP455CTMO)
