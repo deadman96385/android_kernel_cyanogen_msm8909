@@ -32,27 +32,28 @@ struct bl_trig_notifier {
 static int fb_notifier_callback(struct notifier_block *p,
 				unsigned long event, void *data)
 {
-	struct bl_trig_notifier *n = container_of(p,
-					struct bl_trig_notifier, notifier);
-	struct led_classdev *led = n->led;
-	struct fb_event *fb_event = data;
-	int *blank = fb_event->data;
-	int new_status = *blank ? BLANK : UNBLANK;
-
 	switch (event) {
-	case FB_EVENT_BLANK:
-		if (new_status == n->old_status)
-			break;
+		case FB_EVENT_BLANK:
+		{
+			struct bl_trig_notifier *n = container_of(p,
+							struct bl_trig_notifier, notifier);
+			struct led_classdev *led = n->led;
+			struct fb_event *fb_event = data;
+			int *blank = fb_event->data;
+			int new_status = *blank ? BLANK : UNBLANK;
 
-		if ((n->old_status == UNBLANK) ^ n->invert) {
-			n->brightness = led->brightness;
-			__led_set_brightness(led, LED_OFF);
-		} else {
-			__led_set_brightness(led, n->brightness);
+			if (new_status == n->old_status)
+				break;
+
+			if ((n->old_status == UNBLANK) ^ n->invert) {
+				n->brightness = led->brightness;
+				__led_set_brightness(led, LED_OFF);
+			} else {
+				__led_set_brightness(led, n->brightness);
+			}
+
+			n->old_status = new_status;
 		}
-
-		n->old_status = new_status;
-
 		break;
 	}
 
