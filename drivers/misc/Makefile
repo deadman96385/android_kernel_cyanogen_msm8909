@@ -71,7 +71,7 @@ obj-$(CONFIG_UID_CPUTIME) 	+= uid_cputime.o
 #[Audio]-Add-BEGIN by TCTSZ. add the adb force open by long press headset button yuchao.pan@tcl.com, 2016/04/05, for PR1190411
 ifeq ($(TARGET_PRODUCT),Pixi4554G)
 obj-y				+= usb_mode_switch.o
-else ifeq ($(TARGET_PRODUCT),cm_feijao)
+else ifeq ($(TARGET_PRODUCT),omni_feijao)
 obj-y				+= usb_mode_switch.o
 else ifeq ($(TARGET_PRODUCT),POP45)
 obj-y				+= usb_mode_switch.o

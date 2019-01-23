@@ -285,7 +285,7 @@ DTSSUBDIR := qcom
 ifeq ($(TARGET_PRODUCT),POP45C)
 DTSSUBDIR := POP45C
 endif
-ifeq ($(TARGET_PRODUCT),cm_feijao)
+ifeq ($(TARGET_PRODUCT),omni_feijao)
 DTSSUBDIR := POP455C
 endif
 ifeq ($(TARGET_PRODUCT),POP455CTMO)
@@ -347,7 +347,7 @@ dtbs: scripts
 ifeq ($(TARGET_PRODUCT),POP45C)
 	$(Q)$(MAKE) $(build)=$(boot)/dts/POP45C MACHINE=$(MACHINE) dtbs
 endif
-ifeq ($(TARGET_PRODUCT),cm_feijao)
+ifeq ($(TARGET_PRODUCT),omni_feijao)
 	$(Q)$(MAKE) $(build)=$(boot)/dts/POP455C MACHINE=$(MACHINE) dtbs
 endif
 ifeq ($(TARGET_PRODUCT),POP455CTMO)
